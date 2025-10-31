@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
   <!-- relative с фоновым изображением, display: flex для выравнивания справа, padding для отступов. -->
   <section class="monstera-leafs">
-    <div class="featured-image">
+    <div class="featured-image fade-in">
       <p class="featured-image__subtitle">MONSTERA LEAFS</p>
       <p class="featured-image__text">Vestibulum sit amet urna turpis. Mauris euismod elit et nisi ultrices,
         ut
@@ -39,14 +43,14 @@
     </nav>
   </section>
 
-  <!-- padding по всем сторонам, lex-direction: column для вертикального центрирования. -->
+  <!-- padding по всем сторонам, flex-direction: column для вертикального центрирования. -->
   <section class="past-clients">
-    <div class="past-clients__header">
+    <div class="past-clients__header fade-in">
       <h2 class="past-clients__title">Past clients</h2>
       <h3 class="past-clients__subtitle">Trusted by your favourite companies</h3>
     </div>
 
-    <div class="past-clients__logos">
+    <div class="past-clients__logos fade-in">
       <div class="past-clients__logo-item">
         <img src="img/hill_hayes_logo.svg" alt="Hill Playes" width="128px" height="30px">
       </div>
@@ -64,5 +68,51 @@
       </div>
     </div>
   </section>
+
+  <!-- Кнопка "Наверх" -->
+  <button class="scroll-to-top" id="scrollToTop">↑</button>
+
+  <script>
+
+    // Плавное перемещение в самый верх, при нажатии на кнопку scrollToTop
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('visible');
+      } else {
+        scrollToTopBtn.classList.remove('visible');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Плавное появление элементов, когда пользователь проматывает страницу вниз
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+      threshold: 0.15,
+      rootMargin: "0px 0px -100px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('appear');
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    fadeElements.forEach(element => {
+      appearOnScroll.observe(element);
+    });
+
+  </script>
 </body>
+
 </html>
