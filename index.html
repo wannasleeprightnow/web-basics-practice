@@ -16,18 +16,19 @@
 
 <body>
   <!-- Позиционированием relative для абсолютных элементов внутри. -->
-  <section class="aperture-studios">
+  <section class="aperture-studios" id="home">
     <header>
       <!-- display: flex для выравнивания элементов, justify-content: space-between для распределения пространства. -->
       <nav class="main-nav">
         <!-- Изображение логотипа: SVG-файл для масштабируемости, alt-текст для доступности. -->
         <img src="img/aperture_logo.svg" class="main-nav__logo" alt="logo" />
+
         <!-- Нумерованный список main-nav__list -->
-        <ul class="main-nav__list">
-          <li class="main-nav__item"><a href="#" class="main-nav__link">Business areas</a></li>
-          <li class="main-nav__item"><a href="#" class="main-nav__link">Featured images</a></li>
-          <li class="main-nav__item"><a href="#" class="main-nav__link">Gear cage</a></li>
-          <li class="main-nav__item"><a href="#" class="main-nav__link">Contact</a></li>
+        <ul class="main-nav__list" id="navMenu">
+          <li class="main-nav__item"><a href="#business-areas" class="main-nav__link">Business areas</a></li>
+          <li class="main-nav__item"><a href="#featured" class="main-nav__link">Featured images</a></li>
+          <li class="main-nav__item"><a href="#gear" class="main-nav__link">Gear cage</a></li>
+          <li class="main-nav__item"><a href="#contact" class="main-nav__link">Contact</a></li>
           <li class="main-nav__item"><a href="#" class="main-nav__button">Get template</a></li>
         </ul>
       </nav>
@@ -68,66 +69,59 @@
     </nav>
   </section>
 
-  <section class="what-we-do">
-    <h2 class="what-we-do__title">What we do.</h2>
-    <h4 class="what-we-do__subtitle">The areas that we're specialized in.</h4>
+  <section class="what-we-do" id="business-areas">
+    <h2 class="what-we-do__title fade-in">What we do.</h2>
+    <h4 class="what-we-do__subtitle fade-in">The areas that we're specialized in.</h4>
 
     <!-- grid с 2 колонками и 2 строками, gap: 16px. -->
     <div class="tiles">
       <!-- relative позиционирование с overflow: hidden для обрезки содержимого -->
-      <div class="tile">
+      <div class="tile fade-in">
         <img src="img/product_photography.png" />
         <div class="tile__content">
           <p class="tile__title">PRODUCT PHOTOGRAPHY</p>
           <p class="tile__text">Cras commodo consequat orci, in convallis risus egestas non. Nulla efficitur auctor
-            hendrerit. Etiam ut
-            orci
-            varius, faucibus libero ac, cursus quam.</p>
-          <button type="button" class="tile__btn">
+            hendrerit. Etiam ut orci varius, faucibus libero ac, cursus quam.</p>
+          <button type="button" class="tile__btn read-more-btn">
             <span class="tile__btn-circle"></span>
             Read more
           </button>
-
         </div>
       </div>
-      <div class="tile">
+      <div class="tile fade-in">
         <img src="img/architecture_photography.png" width="576px" height="600px" />
         <div class="tile__content">
           <p class="tile__title">ARCHITECTURE PHOTOGRAPHY</p>
           <p class="tile__text">Aenean porta neque eget consequat fringilla. Vestibulum ultrices, orci nec egestas
-            pharetra, ligula est
-            semper enim, nec auctor sapien leo nec purus. Fusce tincidunt aliquet sapien, sit amet rhoncus leo imperdiet
-            nec.</p>
-          <button type="button" class="tile__btn">
+            pharetra, ligula est semper enim, nec auctor sapien leo nec purus. Fusce tincidunt aliquet sapien, sit amet
+            rhoncus leo imperdiet nec.</p>
+          <button type="button" class="tile__btn read-more-btn">
             <span class="tile__btn-circle"></span>
             Read more
           </button>
         </div>
       </div>
-      <div class="tile">
+      <div class="tile fade-in">
         <img src="img/drone_photography.png" width="576px" height="600px" />
         <div class="tile__content">
           <p class="tile__title">DRONE PHOTOGRAPHY</p>
           <p class="tile__text">Mauris euismod elit et nisi ultrices, ut faucibus orci tincidunt. Duis tristique sed
-            lorem a vestibulum.
-            Cras
-            commodo consequat orci, in convallis risus egestas non. Nulla efficitur auctor hendrerit. Etiam ut orci
-            varius, faucibus libero ac, cursus quam.</p>
-          <button type="button" class="tile__btn">
+            lorem a vestibulum. Cras commodo consequat orci, in convallis risus egestas non. Nulla efficitur auctor
+            hendrerit. Etiam ut orci varius, faucibus libero ac, cursus quam.</p>
+          <button type="button" class="tile__btn read-more-btn">
             <span class="tile__btn-circle"></span>
             Read more
           </button>
         </div>
       </div>
-      <div class="tile">
+      <div class="tile fade-in">
         <img src="img/wildlife_photography.png" width="576px" height="600px" />
         <div class="tile__content">
           <p class="tile__title">WILDLIFE PHOTOGRAPHY</p>
           <p class="tile__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque aliquam odio
-            et faucibus. Nulla
-            rhoncus feugiat eros quis consectetur. Morbi neque ex, condimentum dapibus congue et, vulputate ut ligula.
-            Vestibulum sit amet urna turpis.</p>
-          <button type="button" class="tile__btn">
+            et faucibus. Nulla rhoncus feugiat eros quis consectetur. Morbi neque ex, condimentum dapibus congue et,
+            vulputate ut ligula. Vestibulum sit amet urna turpis.</p>
+          <button type="button" class="tile__btn read-more-btn">
             <span class="tile__btn-circle"></span>
             Read more
           </button>
@@ -136,6 +130,64 @@
 
     </div>
   </section>
+
+  <!-- Кнопка "Наверх" -->
+  <button class="scroll-to-top" id="scrollToTop">↑</button>
+
+  <script>
+
+    // Плавное перемещение к элементу, вытранному на навбаре.
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Плавное перемещение в самый верх, при нажатии на кнопку scrollToTop
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('visible');
+      } else {
+        scrollToTopBtn.classList.remove('visible');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Плавное появление элементов, когда пользователь проматывает страницу вниз
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+      threshold: 0.15,
+      rootMargin: "0px 0px -100px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('appear');
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    fadeElements.forEach(element => {
+      appearOnScroll.observe(element);
+    });
+  </script>
 </body>
 
 </html>
