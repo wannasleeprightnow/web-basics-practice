@@ -47,6 +47,8 @@ body {
   font-weight: 500;
   border: none;
   border-radius: 14px;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .btn__circle {
@@ -59,6 +61,17 @@ body {
   margin-bottom: 5px;
   margin-left: 4px;
   margin-right: 0;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateX(10px);
+  opacity: 0.9;
+}
+
+.btn:hover .btn__circle {
+  transform: scale(1.2);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .star-fall {
@@ -91,12 +104,6 @@ body {
   margin: 0;
 }
 
-.star-fall__icons {
-  position: absolute;
-  bottom: 41px;
-  right: 40px;
-}
-
 .need-help {
   background-color: black;
   padding: 80px 0;
@@ -104,71 +111,19 @@ body {
 }
 
 .need-help__title {
-  font-size: 20px;
+  font-size: 40px;
+  line-height: 42px;
   font-weight: 400;
   letter-spacing: 1px;
   margin-bottom: 10px;
 }
 
 .need-help__subtitle {
-  font-size: 16px;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 400;
   color: #c0c0c0;
   margin-bottom: 20px;
-}
-
-.site-footer__form button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 70px;
-  height: 32px;
-  margin-right: 8px;     
-  background-color: #000;
-  color: #fff;
-  border: none;
-  border-radius: 6px;   
-  cursor: pointer;
-  box-shadow: none;
-}
-
-.site-footer__copyright {
-    width: 400px;
-    font-size: 14px;
-    line-height: 20px;
-    color:#C0C0C0;
-}
-
-.site-footer__slogan {
-    font-size: 13px;
-    line-height: 20px;
-    color:#C0C0C0;
-}
-
-hr {
-  margin: 0px auto;
-  border: 0;
-  height: 2px;
-  background-color: #fff;
-  width: 1168px;
-  display: flex;
-  justify-content: center;
-}
-
-.star-fall__icons {
-  position: absolute;
-  bottom: 41px;
-  right: 40px;
-}
-
-.need-help__title {
-    font-size: 40px;
-    line-height: 42px;
-}
-
-.need-help__subtitle {
-    font-size: 24px;
-    line-height: 30px;
-    font-weight: 400;
 }
 
 .site-footer {
@@ -179,7 +134,6 @@ hr {
   flex-direction: column;
   gap: 70px;
   font-family: "Poppins", sans-serif;
-
   max-width: 1168px;
   margin: 0 auto;
 }
@@ -236,6 +190,13 @@ hr {
   margin-bottom: 10px;
   color: #fff;
   font-size: 14px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.site-footer__item:hover {
+  color: #C0C0C0;
+  transform: translateX(5px);
 }
 
 .site-footer__subscribe {
@@ -276,6 +237,14 @@ hr {
   font-size: 14px;
   outline: none;
   color: #000;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.site-footer__form input:focus {
+  outline: none;
+  border-color: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .site-footer__form input::placeholder {
@@ -287,6 +256,22 @@ hr {
   background-color: #000;
   border: none;
   cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  margin-right: 8px;
+  border-radius: 6px;
+}
+
+.site-footer__form button:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.site-footer__form-wrapper {
+  position: relative;
 }
 
 .site-footer__bottom {
@@ -306,4 +291,81 @@ hr {
 .site-footer__icon {
   width: 24px;
   height: 24px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.site-footer__icon:hover {
+  transform: translateY(-3px) scale(1.1);
+  opacity: 0.7;
+}
+
+.site-footer__copyright {
+  width: 400px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #C0C0C0;
+}
+
+hr {
+  margin: 0px auto;
+  border: 0;
+  height: 2px;
+  background-color: #fff;
+  width: 1168px;
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  background-color: #fff;
+  color: #000;
+  transform: translateY(-5px);
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-message {
+  min-height: 20px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.form-message:not(:empty) {
+  opacity: 1;
 }
