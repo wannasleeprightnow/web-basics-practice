@@ -690,6 +690,12 @@ hr {
   gap: 120px;
 }
 
+.site-footer__link {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
 .site-footer__block {
   min-width: 180px;
 }
